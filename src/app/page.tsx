@@ -34,9 +34,9 @@ export default function Home() {
   }, [])
 
   // Smooth scroll function
-  const scrollToSection = (elementRef: React.RefObject<HTMLElement>) => {
+  const scrollToSection = (elementRef: React.RefObject<HTMLElement | null>) => {
     setIsMenuOpen(false) // Close mobile menu if open
-    if (elementRef.current) {
+    if (elementRef && elementRef.current) {
       elementRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
