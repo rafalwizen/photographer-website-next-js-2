@@ -166,9 +166,9 @@ export default function Home() {
 
           <div className="container relative z-20 text-white">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{delay: 0.2}}
                 className="max-w-3xl"
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">{t("hero.title")}</h1>
