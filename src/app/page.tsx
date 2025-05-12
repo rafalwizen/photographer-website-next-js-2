@@ -15,7 +15,6 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 export default function Home() {
   const { t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeCategory, setActiveCategory] = useState("all")
   const [scrollY, setScrollY] = useState(0)
 
   // Refs for sections to scroll to
@@ -44,26 +43,16 @@ export default function Home() {
     }
   }
 
-  const categories = [
-    { id: "all", name: t("gallery.category.all") },
-    { id: "portrait", name: t("gallery.category.portrait") },
-    { id: "landscape", name: t("gallery.category.landscape") },
-    { id: "street", name: t("gallery.category.street") },
-    { id: "wedding", name: t("gallery.category.wedding") },
-  ]
-
-  const photos = [
-    { id: 1, src: "/placeholder.svg?height=800&width=600", category: "portrait", size: "large" },
-    { id: 2, src: "/placeholder.svg?height=600&width=800", category: "landscape", size: "medium" },
-    { id: 3, src: "/placeholder.svg?height=800&width=600", category: "street", size: "small" },
-    { id: 4, src: "/placeholder.svg?height=600&width=800", category: "wedding", size: "medium" },
-    { id: 5, src: "/placeholder.svg?height=800&width=600", category: "portrait", size: "small" },
-    { id: 6, src: "/placeholder.svg?height=600&width=800", category: "landscape", size: "large" },
-    { id: 7, src: "/placeholder.svg?height=800&width=600", category: "street", size: "medium" },
-    { id: 8, src: "/placeholder.svg?height=600&width=800", category: "wedding", size: "small" },
-  ]
-
-  const filteredPhotos = activeCategory === "all" ? photos : photos.filter((photo) => photo.category === activeCategory)
+    const photos = [
+        { id: 1, src: "/images/gallery/1-4.jpg", size: "large" },
+        { id: 2, src: "/images/gallery/9-1.jpg", size: "medium" },
+        { id: 3, src: "/images/gallery/1-3.jpg", size: "small" },
+        { id: 4, src: "/images/gallery/1-6.jpg", size: "small" },
+        { id: 5, src: "/images/gallery/3-1.jpg", size: "small" },
+        { id: 6, src: "/images/gallery/3-2.jpg", size: "large" },
+        { id: 7, src: "/images/gallery/4-3.jpg", size: "medium" },
+        { id: 8, src: "/images/gallery/4-4.jpg", size: "small" },
+    ]
 
   return (
       <div className="min-h-screen bg-background">
@@ -74,7 +63,7 @@ export default function Home() {
                 scrollY > 50 ? "bg-background/80 backdrop-blur-md py-3" : "bg-transparent py-6",
             )}
         >
-          <div className="container flex items-center justify-between">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <Link href="/" className="text-2xl font-bold tracking-tight">
               LENS<span className="text-primary">CRAFT</span>
             </Link>
@@ -164,11 +153,11 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black/40 z-10" />
 
-          <div className="container relative z-20 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white">
             <motion.div
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{delay: 0.2}}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
                 className="max-w-3xl"
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">{t("hero.title")}</h1>
@@ -196,28 +185,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Innovative gallery with dynamic grid */}
         <section ref={galleryRef} id="gallery" className="py-20 bg-background">
-          <div className="container">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
               {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
             </h2>
 
-            <div className="flex overflow-x-auto pb-4 mb-8 justify-center gap-4 hide-scrollbar">
-              {categories.map((category) => (
-                  <Button
-                      key={category.id}
-                      variant={activeCategory === category.id ? "default" : "outline"}
-                      onClick={() => setActiveCategory(category.id)}
-                      className="min-w-max"
-                  >
-                    {category.name}
-                  </Button>
-              ))}
-            </div>
-
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPhotos.map((photo) => (
+              {photos.map((photo) => (
                   <motion.div
                       key={photo.id}
                       layout
@@ -226,9 +201,10 @@ export default function Home() {
                       exit={{ opacity: 0 }}
                       className={cn(
                           "relative group cursor-pointer overflow-hidden rounded-lg",
-                          photo.size === "large" && "md:col-span-2 md:row-span-2",
-                          photo.size === "medium" && "lg:col-span-1 lg:row-span-2",
+                          photo.size === "large" && "md:col-span-2",
+                          photo.size === "medium" && "lg:col-span-1",
                       )}
+                      style={{ maxHeight: "700px" }}
                   >
                     <Image
                         src={photo.src || "/placeholder.svg"}
@@ -236,12 +212,10 @@ export default function Home() {
                         width={800}
                         height={600}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        style={{ maxHeight: "700px" }}
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-white text-center p-4">
-                        <div className="text-sm uppercase tracking-wider mb-2">
-                          {t(`gallery.category.${photo.category}`)}
-                        </div>
                         <h3 className="text-xl font-bold">Photo Title {photo.id}</h3>
                         <Button variant="outline" className="mt-4 text-white border-white hover:bg-white/10">
                           {t("gallery.viewDetails")}
@@ -256,7 +230,7 @@ export default function Home() {
 
         {/* About section with split layout */}
         <section ref={aboutRef} id="about" className="py-20 bg-muted/50">
-          <div className="container">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary rounded-tl-3xl" />
@@ -295,7 +269,7 @@ export default function Home() {
 
         {/* Contact section */}
         <section ref={contactRef} id="contact" className="py-20 bg-background">
-          <div className="container">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 {t("contact.title")} <span className="text-primary">{t("contact.titleHighlight")}</span>
@@ -396,7 +370,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="bg-muted py-12">
-          <div className="container">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-3 gap-8">
               <div>
                 <Link href="/" className="text-2xl font-bold tracking-tight mb-4 inline-block">
