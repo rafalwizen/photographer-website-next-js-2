@@ -152,8 +152,8 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-    // Try to get the language from localStorage, default to 'en'
-    const [language, setLanguageState] = useState<Language>("en")
+    // Try to get the language from localStorage, default to 'pl'
+    const [language, setLanguageState] = useState<Language>("pl")
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("language") as Language
