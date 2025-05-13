@@ -145,10 +145,10 @@ export default function Home() {
           <div
               className="absolute inset-0 z-0"
               style={{
-                backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+                backgroundImage: "url('/images/4-3.jpg?height=1080&width=1920')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                transform: `translateY(${scrollY * 0.5}px)`,
+                backgroundAttachment: "fixed"
               }}
           />
           <div className="absolute inset-0 bg-black/40 z-10" />
