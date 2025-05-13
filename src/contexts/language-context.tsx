@@ -20,8 +20,8 @@ const translations = {
         "nav.book": "Book a Session",
 
         // Hero
-        "hero.title": "Capturing moments that last forever",
-        "hero.subtitle": "Professional photography that tells your unique story through a creative lens",
+        "hero.title": "Capturing moments that that matter",
+        "hero.subtitle": "So, when will I see you in front of my camera?",
         "hero.viewGallery": "View Gallery",
         "hero.bookSession": "Book a Session",
 
@@ -50,10 +50,7 @@ const translations = {
         "contact.subtitle":
             "Ready to capture your special moments? Reach out to discuss your photography needs and book a session.",
         "contact.info": "Contact Information",
-        "contact.studio": "Studio Location",
-        "contact.hours": "Working Hours",
-        "contact.hoursDetail":
-            "Monday - Friday: 9am - 6pm\nSaturday: 10am - 4pm\nSunday: Closed (Available for special events)",
+        "contact.studio": "Location",
         "contact.form.name": "Name",
         "contact.form.email": "Email",
         "contact.form.subject": "Subject",
@@ -72,7 +69,7 @@ const translations = {
         "footer.service.wedding": "Wedding Photography",
         "footer.service.landscape": "Landscape Photography",
         "footer.service.commercial": "Commercial Photography",
-        "footer.copyright": "© 2025 LensCraft Photography. All rights reserved.",
+        "footer.copyright": "© 2025 PawełRozbicki Photography. All rights reserved.",
 
         // Language
         language: "Language",
@@ -88,8 +85,8 @@ const translations = {
         "nav.book": "Zarezerwuj sesję",
 
         // Hero
-        "hero.title": "Uwieczniamy chwile, które trwają wiecznie",
-        "hero.subtitle": "Profesjonalna fotografia, która opowiada Twoją unikalną historię przez kreatywny obiektyw",
+        "hero.title": "Uwieczniam chwile, które mają znaczenie",
+        "hero.subtitle": "A z Tobą kiedy widzę się na zdjęcia?",
         "hero.viewGallery": "Zobacz galerię",
         "hero.bookSession": "Zarezerwuj sesję",
 
@@ -118,10 +115,7 @@ const translations = {
         "contact.subtitle":
             "Gotowy, aby uwiecznić swoje wyjątkowe chwile? Skontaktuj się, aby omówić swoje potrzeby fotograficzne i zarezerwować sesję.",
         "contact.info": "Informacje kontaktowe",
-        "contact.studio": "Lokalizacja studia",
-        "contact.hours": "Godziny pracy",
-        "contact.hoursDetail":
-            "Poniedziałek - Piątek: 9:00 - 18:00\nSobota: 10:00 - 16:00\nNiedziela: Zamknięte (Dostępne dla specjalnych wydarzeń)",
+        "contact.studio": "Lokalizacja",
         "contact.form.name": "Imię",
         "contact.form.email": "Email",
         "contact.form.subject": "Temat",
@@ -133,14 +127,14 @@ const translations = {
         "contact.form.messagePlaceholder": "Twoja wiadomość",
 
         // Footer
-        "footer.tagline": "Uwieczniamy piękne chwile życia przez kreatywny obiektyw.",
+        "footer.tagline": "Uwieczniam piękne chwile życia przez kreatywny obiektyw.",
         "footer.quickLinks": "Szybkie linki",
         "footer.services": "Usługi",
         "footer.service.portrait": "Fotografia portretowa",
         "footer.service.wedding": "Fotografia ślubna",
         "footer.service.landscape": "Fotografia krajobrazowa",
         "footer.service.commercial": "Fotografia komercyjna",
-        "footer.copyright": "© 2025 LensCraft Photography. Wszelkie prawa zastrzeżone.",
+        "footer.copyright": "© 2025 PawełRozbicki Photography. Wszelkie prawa zastrzeżone.",
 
         // Language
         language: "Język",

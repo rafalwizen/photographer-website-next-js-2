@@ -65,7 +65,7 @@ export default function Home() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <Link href="/" className="text-2xl font-bold tracking-tight">
-              LENS<span className="text-primary">CRAFT</span>
+              PAWEŁ<span className="text-primary">ROZBICKI</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -251,13 +251,10 @@ export default function Home() {
                 <p className="text-muted-foreground mb-6">{t("about.paragraph1")}</p>
                 <p className="text-muted-foreground mb-6">{t("about.paragraph2")}</p>
                 <div className="flex gap-4 mb-8">
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link href="https://www.instagram.com/p_rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
                     <Instagram className="h-6 w-6" />
                   </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Twitter className="h-6 w-6" />
-                  </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959" className="text-muted-foreground hover:text-primary transition-colors">
                     <Facebook className="h-6 w-6" />
                   </Link>
                 </div>
@@ -283,32 +280,27 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span>contact@lenscraft.com</span>
+                    <span>pawel.rozbicki@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Instagram className="h-5 w-5 text-primary" />
-                    <span>@lenscraft</span>
+                    <Link href="https://www.instagram.com/p_rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Instagram className="h-5 w-5 text-primary" />
+                    </Link>
+                    <span>@p_rozbicki</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Twitter className="h-5 w-5 text-primary" />
-                    <span>@lenscraft_photo</span>
+                    <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Facebook className="h-5 w-5 text-primary" />
+                    </Link>
+                    <span>Paweł Rozbicki Photography</span>
                   </div>
                 </div>
 
                 <div className="mt-8">
                   <h4 className="font-medium mb-2">{t("contact.studio")}</h4>
                   <p className="text-muted-foreground">
-                    123 Photography Lane
-                    <br />
-                    Creative District
-                    <br />
-                    New York, NY 10001
+                    Tarnowskie Góry
                   </p>
-                </div>
-
-                <div className="mt-8">
-                  <h4 className="font-medium mb-2">{t("contact.hours")}</h4>
-                  <p className="text-muted-foreground whitespace-pre-line">{t("contact.hoursDetail")}</p>
                 </div>
               </div>
 
@@ -374,17 +366,14 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8">
               <div>
                 <Link href="/" className="text-2xl font-bold tracking-tight mb-4 inline-block">
-                  LENS<span className="text-primary">CRAFT</span>
+                  PAWEŁ<span className="text-primary">ROZBICKI</span>
                 </Link>
                 <p className="text-muted-foreground mt-2 mb-4">{t("footer.tagline")}</p>
                 <div className="flex gap-4">
                   <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                     <Instagram className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Twitter className="h-5 w-5" />
-                  </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959" className="text-muted-foreground hover:text-primary transition-colors">
                     <Facebook className="h-5 w-5" />
                   </Link>
                 </div>
