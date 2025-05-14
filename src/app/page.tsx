@@ -12,11 +12,16 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import Lightbox from "@/components/lightbox"
 
 export default function Home() {
   const { t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
 
   // Refs for sections to scroll to
   const homeRef = useRef<HTMLElement>(null)
@@ -32,6 +37,19 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    if (lightboxOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [lightboxOpen])
 
   // Smooth scroll function
   const scrollToSection = (elementRef: React.RefObject<HTMLElement | null>) => {
@@ -55,9 +73,25 @@ export default function Home() {
         { id: 8, src: "/images/gallery/4-4.jpg", size: "small" },
     ]
 
+  const openLightbox = (index: number) => {
+    setCurrentPhotoIndex(index)
+    setLightboxOpen(true)
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  const goToNextPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length)
+  }
+
+  const goToPrevPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length)
+  }
+
   return (
       <div className="min-h-screen bg-background">
-        {/* Innovative floating header that changes opacity on scroll */}
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -140,7 +174,7 @@ export default function Home() {
             </motion.div>
         )}
 
-        {/* Hero section with parallax effect */}
+        {/* Hero section */}
         <section ref={homeRef} className="relative h-screen flex items-center justify-center overflow-hidden">
           <div
               className="absolute inset-0 z-0"
@@ -187,14 +221,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Gallery section with clickable images */}
         <section ref={galleryRef} id="gallery" className="py-20 bg-background">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
               {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
             </h2>
 
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {photos.map((photo) => (
+              {photos.map((photo, index) => (
                   <motion.div
                       key={photo.id}
                       layout
@@ -207,6 +242,7 @@ export default function Home() {
                           photo.size === "medium" && "lg:col-span-1",
                       )}
                       style={{ maxHeight: "700px" }}
+                      onClick={() => openLightbox(index)}
                   >
                     <Image
                         src={photo.src || "/placeholder.svg"}
@@ -216,12 +252,11 @@ export default function Home() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         style={{ maxHeight: "700px" }}
                     />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="text-white text-center p-4">
-                        <h3 className="text-xl font-bold">Photo Title {photo.id}</h3>
-                        <Button variant="outline" className="mt-4 text-white border-white hover:bg-white/10">
-                          {t("gallery.viewDetails")}
-                        </Button>
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-black/50 rounded-full p-3">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
                       </div>
                     </div>
                   </motion.div>
@@ -230,7 +265,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About section with split layout */}
+        {/* About section */}
         <section ref={aboutRef} id="about" className="py-20 bg-muted/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -469,6 +504,16 @@ export default function Home() {
             </div>
           </div>
         </footer>
+
+        {/* Lightbox component */}
+        <Lightbox
+            isOpen={lightboxOpen}
+            onClose={closeLightbox}
+            photos={photos}
+            currentIndex={currentPhotoIndex}
+            onPrevious={goToPrevPhoto}
+            onNext={goToNextPhoto}
+        />
       </div>
   )
 }

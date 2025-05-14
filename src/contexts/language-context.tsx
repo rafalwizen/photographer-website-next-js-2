@@ -27,7 +27,6 @@ const translations = {
         // Gallery
         "gallery.title": "Featured",
         "gallery.titleHighlight": "Sessions",
-        "gallery.viewDetails": "View Details",
 
         // About
         "about.title": "About",
@@ -86,7 +85,6 @@ const translations = {
         // Gallery
         "gallery.title": "Wybrane",
         "gallery.titleHighlight": "Sesje",
-        "gallery.viewDetails": "Zobacz szczegóły",
 
         // About
         "about.title": "O",
