@@ -8,8 +8,8 @@ import { LanguageProvider } from "@/contexts/language-context"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-    title: "LensCraft Photography",
-    description: "Professional photography services capturing life's beautiful moments",
+    title: "Paweł Rozbicki",
+    description: "Fotograf ślubny w Tarnowskich Górach, na Śląsku, w Toskanii i gdzie tylko potrzeba!",
 }
 
 export default function RootLayout({
