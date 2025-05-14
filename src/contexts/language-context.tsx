@@ -26,21 +26,16 @@ const translations = {
 
         // Gallery
         "gallery.title": "Featured",
-        "gallery.titleHighlight": "Work",
-        "gallery.category.all": "All Work",
-        "gallery.category.portrait": "Portrait",
-        "gallery.category.landscape": "Landscape",
-        "gallery.category.street": "Street",
-        "gallery.category.wedding": "Wedding",
+        "gallery.titleHighlight": "Sessions",
         "gallery.viewDetails": "View Details",
 
         // About
         "about.title": "About",
         "about.titleHighlight": "Me",
         "about.paragraph1":
-            "Hello! I'm a passionate photographer with over 10 years of experience capturing life's most precious moments. My journey began when I picked up my first camera at the age of 16, and I've been in love with photography ever since.",
+            "Hi! I'm a photography enthusiast with many years of experience capturing life’s most meaningful moments. My journey began at a young age, and ever since, photography has been my true passion.",
         "about.paragraph2":
-            "I specialize in portrait, landscape, and wedding photography, bringing a unique perspective to each shoot. My style combines classic techniques with modern aesthetics to create timeless images that tell your story.",
+            "I specialize in portrait, landscape, and wedding photography, bringing a unique perspective to every session. My style blends classic techniques with a modern aesthetic, creating timeless images that tell your story.",
         "about.learnMore": "Learn More",
 
         // Contact
@@ -90,12 +85,7 @@ const translations = {
 
         // Gallery
         "gallery.title": "Wybrane",
-        "gallery.titleHighlight": "Prace",
-        "gallery.category.all": "Wszystkie prace",
-        "gallery.category.portrait": "Portrety",
-        "gallery.category.landscape": "Krajobrazy",
-        "gallery.category.street": "Uliczne",
-        "gallery.category.wedding": "Ślubne",
+        "gallery.titleHighlight": "Sesje",
         "gallery.viewDetails": "Zobacz szczegóły",
 
         // About
