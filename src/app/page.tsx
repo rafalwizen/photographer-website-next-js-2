@@ -87,13 +87,12 @@ export default function Home() {
               >
                 {t("nav.about")}
               </button>
-              <button
+              <Button
                   onClick={() => scrollToSection(contactRef)}
                   className="text-sm font-medium hover:text-primary transition-colors"
               >
                 {t("nav.contact")}
-              </button>
-              <Button>{t("nav.book")}</Button>
+              </Button>
               <LanguageSwitcher />
             </div>
 
@@ -130,11 +129,11 @@ export default function Home() {
                 <button onClick={() => scrollToSection(aboutRef)} className="text-2xl font-medium">
                   {t("nav.about")}
                 </button>
-                <button onClick={() => scrollToSection(contactRef)} className="text-2xl font-medium">
+                <Button size="lg"
+                        className="mt-4"
+                        onClick={() => scrollToSection(contactRef)}
+                >
                   {t("nav.contact")}
-                </button>
-                <Button size="lg" className="mt-4">
-                  {t("nav.book")}
                 </Button>
               </div>
             </motion.div>
@@ -166,7 +165,9 @@ export default function Home() {
                 <Button size="lg" className="text-base" onClick={() => scrollToSection(galleryRef)}>
                   {t("hero.viewGallery")}
                 </Button>
-                <Button size="lg" variant="outline" className="text-base text-white border-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="text-base text-black border-white hover:bg-white/10"
+                        onClick={() => scrollToSection(contactRef)}
+                >
                   {t("hero.bookSession")}
                 </Button>
               </div>

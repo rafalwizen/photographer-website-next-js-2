@@ -17,7 +17,6 @@ const translations = {
         "nav.gallery": "Gallery",
         "nav.about": "About",
         "nav.contact": "Contact",
-        "nav.book": "Book a Session",
 
         // Hero
         "hero.title": "Capturing moments that that matter",
@@ -82,7 +81,6 @@ const translations = {
         "nav.gallery": "Galeria",
         "nav.about": "O mnie",
         "nav.contact": "Kontakt",
-        "nav.book": "Zarezerwuj sesję",
 
         // Hero
         "hero.title": "Uwieczniam chwile, które mają znaczenie",
