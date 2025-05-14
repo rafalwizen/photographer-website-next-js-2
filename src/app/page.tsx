@@ -6,7 +6,8 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Menu, X, Instagram, Twitter, Facebook, Mail, ArrowRight } from "lucide-react"
+import { Menu, X, Instagram, Facebook, Mail, ArrowRight } from "lucide-react"
+import MyWedIcon from "@/components/icons/MyWedIcon"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/contexts/language-context"
@@ -258,6 +259,12 @@ export default function Home() {
                   <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959" className="text-muted-foreground hover:text-primary transition-colors">
                     <Facebook className="h-6 w-6" />
                   </Link>
+                  <Link
+                      href="https://mywed.com/pl/photographer/rozbicki/"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <MyWedIcon className="h-6 w-6" />
+                  </Link>
                 </div>
                 <Button>{t("about.learnMore")}</Button>
               </div>
@@ -294,6 +301,12 @@ export default function Home() {
                       <Facebook className="h-5 w-5 text-primary" />
                     </Link>
                     <span>Paweł Rozbicki Photography</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Link href="https://mywed.com/pl/photographer/rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
+                      <MyWedIcon className="h-5 w-5 text-primary" />
+                    </Link>
+                    <span>MyWed</span>
                   </div>
                 </div>
 
@@ -376,6 +389,12 @@ export default function Home() {
                   </Link>
                   <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959" className="text-muted-foreground hover:text-primary transition-colors">
                     <Facebook className="h-5 w-5" />
+                  </Link>
+                  <Link
+                      href="https://mywed.com/pl/photographer/rozbicki/"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <MyWedIcon className="h-6 w-6" />
                   </Link>
                 </div>
               </div>
