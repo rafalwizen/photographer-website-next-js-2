@@ -62,16 +62,61 @@ export default function Home() {
     }
   }
 
-    const photos = [
-        { id: 1, src: "/images/gallery/1-4.jpg", size: "large" },
-        { id: 2, src: "/images/gallery/9-1.jpg", size: "medium" },
-        { id: 3, src: "/images/gallery/1-3.jpg", size: "small" },
-        { id: 4, src: "/images/gallery/1-6.jpg", size: "small" },
-        { id: 5, src: "/images/gallery/3-1.jpg", size: "small" },
-        { id: 6, src: "/images/gallery/3-2.jpg", size: "large" },
-        { id: 7, src: "/images/gallery/4-3.jpg", size: "medium" },
-        { id: 8, src: "/images/gallery/4-4.jpg", size: "small" },
-    ]
+  const photos = [
+    {id: 1, src: "/images/gallery/1-1.jpg", size: "medium"},
+    {id: 2, src: "/images/gallery/1-4.jpg", size: "large"},
+    {id: 3, src: "/images/gallery/1-3.jpg", size: "small"},
+    {id: 4, src: "/images/gallery/1-4a.jpg", size: "small"},
+    {id: 5, src: "/images/gallery/1-6.jpg", size: "small"},
+    {id: 6, src: "/images/gallery/3-4.jpg", size: "large"},
+    {id: 7, src: "/images/gallery/3-2.jpg", size: "medium"},
+    {id: 8, src: "/images/gallery/3-1.jpg", size: "small"},
+    {id: 9, src: "/images/gallery/4-3.jpg", size: "large"},
+    {id: 10, src: "/images/gallery/4-1.jpg", size: "medium"},
+    {id: 11, src: "/images/gallery/4-2.jpg", size: "small"},
+    {id: 12, src: "/images/gallery/4-0.jpg", size: "small"},
+    {id: 13, src: "/images/gallery/4-7.jpg", size: "large"},
+    {id: 14, src: "/images/gallery/4-4.jpg", size: "medium"},
+    {id: 15, src: "/images/gallery/5-2.jpg", size: "medium"},
+    {id: 16, src: "/images/gallery/5-1.jpg", size: "large"},
+    {id: 17, src: "/images/gallery/6-1.jpg", size: "small"},
+    {id: 18, src: "/images/gallery/6-2.jpg", size: "small"},
+    {id: 19, src: "/images/gallery/6-3.jpg", size: "small"},
+    {id: 20, src: "/images/gallery/6-4.jpg", size: "medium"},
+    {id: 21, src: "/images/gallery/6-5.jpg", size: "large"},
+    {id: 22, src: "/images/gallery/7-1.jpg", size: "large"},
+    {id: 23, src: "/images/gallery/7-2.jpg", size: "small"},
+    {id: 24, src: "/images/gallery/7-3.jpg", size: "small"},
+    {id: 25, src: "/images/gallery/7-4.jpg", size: "small"},
+    {id: 26, src: "/images/gallery/7-5.jpg", size: "small"},
+    {id: 27, src: "/images/gallery/8-1.jpg", size: "medium"},
+    {id: 28, src: "/images/gallery/8-2.jpg", size: "small"},
+    {id: 29, src: "/images/gallery/9-1.jpg", size: "small"},
+    {id: 30, src: "/images/gallery/9-2.jpg", size: "medium"},
+    {id: 31, src: "/images/gallery/9-4.jpg", size: "large"},
+    {id: 32, src: "/images/gallery/9-3.jpg", size: "medium"},
+    {id: 33, src: "/images/gallery/9-6.jpg", size: "small"},
+    {id: 34, src: "/images/gallery/9-7.jpg", size: "medium"},
+    {id: 35, src: "/images/gallery/9-8.jpg", size: "small"},
+    {id: 36, src: "/images/gallery/9-9.jpg", size: "large"},
+    {id: 37, src: "/images/gallery/9-10.jpg", size: "medium"},
+    {id: 38, src: "/images/gallery/9-10a.jpg", size: "small"},
+    {id: 39, src: "/images/gallery/9-11.jpg", size: "large"},
+    {id: 40, src: "/images/gallery/9-12.jpg", size: "medium"},
+    {id: 41, src: "/images/gallery/9-13.jpg", size: "large"},
+    {id: 42, src: "/images/gallery/9-14.jpg", size: "medium"},
+    {id: 43, src: "/images/gallery/9-15.jpg", size: "small"},
+    {id: 44, src: "/images/gallery/9-15a.jpg", size: "small"},
+    {id: 45, src: "/images/gallery/10-1.jpg", size: "small"},
+    {id: 46, src: "/images/gallery/10-3.jpg", size: "large"},
+    {id: 47, src: "/images/gallery/10-5.jpg", size: "small"},
+    {id: 48, src: "/images/gallery/10-4.jpg", size: "large"},
+    {id: 49, src: "/images/gallery/10-5a.jpg", size: "small"},
+    {id: 50, src: "/images/gallery/10-8.jpg", size: "small"},
+    {id: 51, src: "/images/gallery/10-7.jpg", size: "small"},
+    {id: 52, src: "/images/gallery/10-6.jpg", size: "large"},
+    {id: 53, src: "/images/gallery/10-10.jpg", size: "small"},
+  ]
 
   const openLightbox = (index: number) => {
     setCurrentPhotoIndex(index)
@@ -228,7 +273,10 @@ export default function Home() {
               {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
             </h2>
 
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[350px] gap-6"
+            >
               {photos.map((photo, index) => (
                   <motion.div
                       key={photo.id}
@@ -238,24 +286,34 @@ export default function Home() {
                       exit={{ opacity: 0 }}
                       className={cn(
                           "relative group cursor-pointer overflow-hidden rounded-lg",
-                          photo.size === "large" && "md:col-span-2",
-                          photo.size === "medium" && "lg:col-span-1",
+                          photo.size === "large" && "col-span-2 row-span-2",
+                          photo.size === "medium" && "col-span-1 row-span-2",
+                          photo.size === "small" && "col-span-1 row-span-1"
                       )}
-                      style={{ maxHeight: "700px" }}
                       onClick={() => openLightbox(index)}
                   >
                     <Image
                         src={photo.src || "/images/placeholder.png"}
                         alt={`Photo ${photo.id}`}
-                        width={800}
-                        height={600}
+                        width={1920}
+                        height={1080}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ maxHeight: "700px" }}
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <div className="bg-black/50 rounded-full p-3">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <svg
+                            className="w-8 h-8 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                          ></path>
                         </svg>
                       </div>
                     </div>
@@ -264,6 +322,7 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
 
         {/* About section */}
         <section ref={aboutRef} id="about" className="py-20 bg-muted/50">
