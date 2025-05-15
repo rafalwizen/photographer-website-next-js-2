@@ -90,9 +90,9 @@ const translations = {
         "about.title": "O",
         "about.titleHighlight": "Mnie",
         "about.paragraph1":
-            "Cześć! Jestem pasjonatem fotografii z ponad 10-letnim doświadczeniem w uwiecznianiu najcenniejszych chwil życia. Moja podróż rozpoczęła się, gdy w wieku 16 lat wziąłem do ręki swój pierwszy aparat i od tego czasu zakochałem się w fotografii.",
+            "Cześć! Jestem pasjonatem fotografii z wieloletnim doświadczeniem w uchwycaniu najważniejszych momentów życia. Moja przygoda z aparatem zaczęła się w młodym wieku i od tamtej pory fotografia stała się moją życiową pasją.",
         "about.paragraph2":
-            "Specjalizuję się w fotografii portretowej, krajobrazowej i ślubnej, wnosząc unikalną perspektywę do każdej sesji. Mój styl łączy klasyczne techniki z nowoczesną estetyką, tworząc ponadczasowe obrazy, które opowiadają Twoją historię.",
+            "Specjalizuję się w fotografii portretowej, krajobrazowej oraz ślubnej, wnosząc indywidualne podejście do każdej sesji. Mój styl to połączenie klasycznych technik z nowoczesnym spojrzeniem, dzięki czemu powstają ponadczasowe zdjęcia, które opowiadają Twoją historię.",
         "about.learnMore": "Dowiedz się więcej",
 
         // Contact
