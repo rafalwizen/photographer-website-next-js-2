@@ -35,7 +35,6 @@ const translations = {
             "Hi! I'm a photography enthusiast with many years of experience capturing life’s most meaningful moments. My journey began at a young age, and ever since, photography has been my true passion.",
         "about.paragraph2":
             "I specialize in portrait, landscape, and wedding photography, bringing a unique perspective to every session. My style blends classic techniques with a modern aesthetic, creating timeless images that tell your story.",
-        "about.learnMore": "Learn More",
 
         // Contact
         "contact.title": "Get in",
@@ -93,7 +92,6 @@ const translations = {
             "Cześć! Jestem pasjonatem fotografii z wieloletnim doświadczeniem w uchwycaniu najważniejszych momentów życia. Moja przygoda z aparatem zaczęła się w młodym wieku i od tamtej pory fotografia stała się moją życiową pasją.",
         "about.paragraph2":
             "Specjalizuję się w fotografii portretowej, krajobrazowej oraz ślubnej, wnosząc indywidualne podejście do każdej sesji. Mój styl to połączenie klasycznych technik z nowoczesnym spojrzeniem, dzięki czemu powstają ponadczasowe zdjęcia, które opowiadają Twoją historię.",
-        "about.learnMore": "Dowiedz się więcej",
 
         // Contact
         "contact.title": "Skontaktuj się",

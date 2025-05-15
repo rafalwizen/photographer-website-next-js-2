@@ -360,7 +360,6 @@ export default function Home() {
                     <MyWedIcon className="h-6 w-6" />
                   </Link>
                 </div>
-                <Button>{t("about.learnMore")}</Button>
               </div>
             </div>
           </div>
