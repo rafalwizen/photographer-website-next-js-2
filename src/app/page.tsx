@@ -179,7 +179,7 @@ export default function Home() {
           <div
               className="absolute inset-0 z-0"
               style={{
-                backgroundImage: "url('/images/4-3.jpg?height=1080&width=1920')",
+                backgroundImage: "url('/images/background.jpg?height=1080&width=1920')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed"
@@ -245,7 +245,7 @@ export default function Home() {
                       onClick={() => openLightbox(index)}
                   >
                     <Image
-                        src={photo.src || "/placeholder.svg"}
+                        src={photo.src || "/images/placeholder.png"}
                         alt={`Photo ${photo.id}`}
                         width={800}
                         height={600}
@@ -272,7 +272,7 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary rounded-tl-3xl" />
                 <Image
-                    src="/placeholder.svg?height=800&width=600"
+                    src="/images/profile_picture.jpg?height=800&width=600"
                     alt="Photographer"
                     width={600}
                     height={800}
