@@ -5,7 +5,8 @@ import {Mail, Instagram, Facebook} from "lucide-react"
 import MyWedIcon from "@/components/icons/MyWedIcon"
 import {useLanguage} from "@/contexts/language-context"
 import {Button} from "@/components/ui/button"
-import type React from "react";
+import React, {FormEvent, useState} from "react";
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
     contactRef: React.RefObject<HTMLElement | null>
@@ -13,6 +14,46 @@ interface ContactProps {
 
 export default function Contact({contactRef}: ContactProps) {
     const {t} = useLanguage()
+
+    const [formData, setFormData] = useState({
+        domain: "Paweł Rozbicki website", // used for my common template in emailJS
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const form = e.target as HTMLFormElement;
+        const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
+        const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;
+        const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID as string;
+
+        emailjs.sendForm(serviceID, templateID, form, userID)
+            .then(() => {
+                console.log("Wiadomość wysłana pomyślnie");
+                setSubmitStatus('success');
+                setFormData({
+                    domain: "Hanuskowy Torcik",
+                    name: "",
+                    email: "",
+                    message: "",
+                });
+            }, (error) => {
+                console.log("Błąd podczas wysyłania wiadomości");
+                console.log(error);
+                setSubmitStatus('error');
+            })
+            .finally(() => {
+                setIsSubmitting(false);
+            });
+    };
 
     return (
         <section ref={contactRef} id="contact" className="py-20 bg-background">
@@ -63,7 +104,12 @@ export default function Contact({contactRef}: ContactProps) {
                         </div>
                     </div>
 
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                        <input
+                            type="hidden"
+                            name="domain"
+                            value={formData.domain}
+                        />
                         <div className="grid sm:grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <label htmlFor="name" className="text-sm font-medium">
@@ -72,6 +118,10 @@ export default function Contact({contactRef}: ContactProps) {
                                 <input
                                     id="name"
                                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                    value={formData.name}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, name: e.target.value })
+                                    }
                                     placeholder={t("contact.form.namePlaceholder")}
                                 />
                             </div>
@@ -83,20 +133,13 @@ export default function Contact({contactRef}: ContactProps) {
                                     id="email"
                                     type="email"
                                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                    value={formData.email}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, email: e.target.value })
+                                    }
                                     placeholder={t("contact.form.emailPlaceholder")}
                                 />
                             </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="subject" className="text-sm font-medium">
-                                {t("contact.form.subject")}
-                            </label>
-                            <input
-                                id="subject"
-                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                                placeholder={t("contact.form.subjectPlaceholder")}
-                            />
                         </div>
 
                         <div className="space-y-2">
@@ -107,12 +150,16 @@ export default function Contact({contactRef}: ContactProps) {
                                 id="message"
                                 rows={5}
                                 className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                value={formData.message}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, message: e.target.value })
+                                }
                                 placeholder={t("contact.form.messagePlaceholder")}
                             />
                         </div>
 
-                        <Button type="submit" className="w-full">
-                            {t("contact.form.send")}
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                            {isSubmitting ? t("contact.form.sending") : t("contact.form.send")}
                         </Button>
                     </form>
                 </div>
