@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "@/contexts/language-context"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import Lightbox from "@/components/lightbox"
+import { photos } from '@/data/photos';
 
 export default function Home() {
   const { t } = useLanguage()
@@ -61,62 +62,6 @@ export default function Home() {
       })
     }
   }
-
-  const photos = [
-    {id: 1, src: "/images/gallery/1-1.jpg", size: "medium"},
-    {id: 2, src: "/images/gallery/1-4.jpg", size: "large"},
-    {id: 3, src: "/images/gallery/1-3.jpg", size: "small"},
-    {id: 4, src: "/images/gallery/1-4a.jpg", size: "small"},
-    {id: 5, src: "/images/gallery/1-6.jpg", size: "small"},
-    {id: 6, src: "/images/gallery/3-4.jpg", size: "large"},
-    {id: 7, src: "/images/gallery/3-2.jpg", size: "medium"},
-    {id: 8, src: "/images/gallery/3-1.jpg", size: "small"},
-    {id: 9, src: "/images/gallery/4-3.jpg", size: "large"},
-    {id: 10, src: "/images/gallery/4-1.jpg", size: "medium"},
-    {id: 11, src: "/images/gallery/4-2.jpg", size: "small"},
-    {id: 12, src: "/images/gallery/4-0.jpg", size: "small"},
-    {id: 13, src: "/images/gallery/4-7.jpg", size: "large"},
-    {id: 14, src: "/images/gallery/4-4.jpg", size: "medium"},
-    {id: 15, src: "/images/gallery/5-2.jpg", size: "medium"},
-    {id: 16, src: "/images/gallery/5-1.jpg", size: "large"},
-    {id: 17, src: "/images/gallery/6-1.jpg", size: "small"},
-    {id: 18, src: "/images/gallery/6-2.jpg", size: "small"},
-    {id: 19, src: "/images/gallery/6-3.jpg", size: "small"},
-    {id: 20, src: "/images/gallery/6-4.jpg", size: "medium"},
-    {id: 21, src: "/images/gallery/6-5.jpg", size: "large"},
-    {id: 22, src: "/images/gallery/7-1.jpg", size: "large"},
-    {id: 23, src: "/images/gallery/7-2.jpg", size: "small"},
-    {id: 24, src: "/images/gallery/7-3.jpg", size: "small"},
-    {id: 25, src: "/images/gallery/7-4.jpg", size: "small"},
-    {id: 26, src: "/images/gallery/7-5.jpg", size: "small"},
-    {id: 27, src: "/images/gallery/8-1.jpg", size: "medium"},
-    {id: 28, src: "/images/gallery/8-2.jpg", size: "small"},
-    {id: 29, src: "/images/gallery/9-1.jpg", size: "small"},
-    {id: 30, src: "/images/gallery/9-2.jpg", size: "medium"},
-    {id: 31, src: "/images/gallery/9-4.jpg", size: "large"},
-    {id: 32, src: "/images/gallery/9-3.jpg", size: "medium"},
-    {id: 33, src: "/images/gallery/9-6.jpg", size: "small"},
-    {id: 34, src: "/images/gallery/9-7.jpg", size: "medium"},
-    {id: 35, src: "/images/gallery/9-8.jpg", size: "small"},
-    {id: 36, src: "/images/gallery/9-9.jpg", size: "large"},
-    {id: 37, src: "/images/gallery/9-10.jpg", size: "medium"},
-    {id: 38, src: "/images/gallery/9-10a.jpg", size: "small"},
-    {id: 39, src: "/images/gallery/9-11.jpg", size: "large"},
-    {id: 40, src: "/images/gallery/9-12.jpg", size: "medium"},
-    {id: 41, src: "/images/gallery/9-13.jpg", size: "large"},
-    {id: 42, src: "/images/gallery/9-14.jpg", size: "medium"},
-    {id: 43, src: "/images/gallery/9-15.jpg", size: "small"},
-    {id: 44, src: "/images/gallery/9-15a.jpg", size: "small"},
-    {id: 45, src: "/images/gallery/10-1.jpg", size: "small"},
-    {id: 46, src: "/images/gallery/10-3.jpg", size: "large"},
-    {id: 47, src: "/images/gallery/10-5.jpg", size: "small"},
-    {id: 48, src: "/images/gallery/10-4.jpg", size: "large"},
-    {id: 49, src: "/images/gallery/10-5a.jpg", size: "small"},
-    {id: 50, src: "/images/gallery/10-8.jpg", size: "small"},
-    {id: 51, src: "/images/gallery/10-7.jpg", size: "small"},
-    {id: 52, src: "/images/gallery/10-6.jpg", size: "large"},
-    {id: 53, src: "/images/gallery/10-10.jpg", size: "small"},
-  ]
 
   const openLightbox = (index: number) => {
     setCurrentPhotoIndex(index)
