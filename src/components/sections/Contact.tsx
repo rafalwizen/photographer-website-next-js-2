@@ -117,6 +117,7 @@ export default function Contact({contactRef}: ContactProps) {
                                 </label>
                                 <input
                                     id="name"
+                                    name="name"
                                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                                     value={formData.name}
                                     onChange={(e) =>
@@ -131,6 +132,7 @@ export default function Contact({contactRef}: ContactProps) {
                                 </label>
                                 <input
                                     id="email"
+                                    name="email"
                                     type="email"
                                     className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                                     value={formData.email}
@@ -148,6 +150,7 @@ export default function Contact({contactRef}: ContactProps) {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 rows={5}
                                 className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                                 value={formData.message}
@@ -161,6 +164,17 @@ export default function Contact({contactRef}: ContactProps) {
                         <Button type="submit" className="w-full" disabled={isSubmitting}>
                             {isSubmitting ? t("contact.form.sending") : t("contact.form.send")}
                         </Button>
+
+                        {submitStatus === 'success' && (
+                            <p className="text-sm text-primary text-center mt-2">
+                                {t("contact.form.success")}
+                            </p>
+                        )}
+                        {submitStatus === 'error' && (
+                            <p className="text-sm text-destructive text-center mt-2">
+                                {t("contact.form.error")}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
