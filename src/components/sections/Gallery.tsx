@@ -65,9 +65,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                 exit={{opacity: 0}}
                                 className={cn(
                                     "relative group cursor-pointer overflow-hidden rounded-lg mx-auto w-full max-w-md",
-                                    // Medium (pionowe): 1.5:1 - szerokość pełna, wysokość 1.5x szerokości
                                     photo.size === "medium" && "aspect-[2/3]",
-                                    // Large i small (poziome): 1:1.5 - szerokość pełna, wysokość 0.67x szerokości
                                     photo.size !== "medium" && "aspect-[3/2]"
                                 )}
                                 onClick={() => openLightbox(index)}
@@ -116,9 +114,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                 exit={{opacity: 0}}
                                 className={cn(
                                     "relative group cursor-pointer overflow-hidden rounded-lg",
-                                    // Na tabletach upraszczamy rozmiary aby uniknąć problemów
                                     "md:col-span-1 md:row-span-1",
-                                    // Na dużych ekranach przywracamy oryginalne rozmiary
                                     photo.size === "large" && "lg:col-span-2 lg:row-span-2",
                                     photo.size === "medium" && "lg:col-span-1 lg:row-span-2",
                                     photo.size === "small" && "lg:col-span-1 lg:row-span-1"
@@ -129,7 +125,13 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
                                     fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                                    sizes={
+                                        photo.size === "large"
+                                            ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 66vw"
+                                            : photo.size === "medium"
+                                                ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    }
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
