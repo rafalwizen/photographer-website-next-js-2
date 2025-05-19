@@ -21,10 +21,9 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
             <div
                 className="absolute inset-0 z-0"
                 style={{
-                    backgroundImage: "url('/images/background.jpg?height=1080&width=1920')",
+                    backgroundImage: "url('/images/background.jpg')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    backgroundAttachment: "fixed"
                 }}
             />
             <div className="absolute inset-0 bg-black/40 z-10"/>
