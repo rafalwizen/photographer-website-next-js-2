@@ -64,7 +64,7 @@ const translations = {
         "footer.service.wedding": "Wedding Photography",
         "footer.service.landscape": "Landscape Photography",
         "footer.service.commercial": "Commercial Photography",
-        "footer.copyright": "© 2025 PawełRozbicki Photography. All rights reserved.",
+        "footer.copyright": "© 2025 Paweł Rozbicki Photography. All rights reserved.",
 
         // Language
         language: "Language",
@@ -124,7 +124,7 @@ const translations = {
         "footer.service.wedding": "Fotografia ślubna",
         "footer.service.landscape": "Fotografia krajobrazowa",
         "footer.service.commercial": "Fotografia komercyjna",
-        "footer.copyright": "© 2025 PawełRozbicki Photography. Wszelkie prawa zastrzeżone.",
+        "footer.copyright": "© 2025 Paweł Rozbicki Photography. Wszelkie prawa zastrzeżone.",
 
         // Language
         language: "Język",
