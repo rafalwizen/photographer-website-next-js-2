@@ -55,9 +55,56 @@ export default function Gallery({galleryRef}: GalleryProps) {
                         {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
                     </h2>
 
+                    {/* Mobile layout (< 768px) - aspect ratio based on photo orientation */}
+                    <div className="block md:hidden space-y-6">
+                        {photos.map((photo, index) => (
+                            <motion.div
+                                key={photo.id}
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                className={cn(
+                                    "relative group cursor-pointer overflow-hidden rounded-lg mx-auto w-full max-w-md",
+                                    // Medium (pionowe): 1.5:1 - szerokość pełna, wysokość 1.5x szerokości
+                                    photo.size === "medium" && "aspect-[2/3]",
+                                    // Large i small (poziome): 1:1.5 - szerokość pełna, wysokość 0.67x szerokości
+                                    photo.size !== "medium" && "aspect-[3/2]"
+                                )}
+                                onClick={() => openLightbox(index)}
+                            >
+                                <Image
+                                    src={photo.src || "/images/placeholder.png"}
+                                    alt={`Photo ${photo.id}`}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div
+                                    className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <div className="bg-black/50 rounded-full p-3">
+                                        <svg
+                                            className="w-8 h-8 text-white"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Tablet and desktop layout (>= 768px) - original masonry grid */}
                     <motion.div
                         layout
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[350px] gap-6"
+                        className="hidden md:grid grid-cols-2 lg:grid-cols-3 auto-rows-[350px] gap-6"
                     >
                         {photos.map((photo, index) => (
                             <motion.div
@@ -68,18 +115,20 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                 exit={{opacity: 0}}
                                 className={cn(
                                     "relative group cursor-pointer overflow-hidden rounded-lg",
-                                    photo.size === "large" && "col-span-2 row-span-2",
-                                    photo.size === "medium" && "col-span-1 row-span-2",
-                                    photo.size === "small" && "col-span-1 row-span-1"
+                                    // Na tabletach upraszczamy rozmiary aby uniknąć problemów
+                                    "md:col-span-1 md:row-span-1",
+                                    // Na dużych ekranach przywracamy oryginalne rozmiary
+                                    photo.size === "large" && "lg:col-span-2 lg:row-span-2",
+                                    photo.size === "medium" && "lg:col-span-1 lg:row-span-2",
+                                    photo.size === "small" && "lg:col-span-1 lg:row-span-1"
                                 )}
                                 onClick={() => openLightbox(index)}
                             >
                                 <Image
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
-                                    width={1920}
-                                    height={1080}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
                                     className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
