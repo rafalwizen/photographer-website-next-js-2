@@ -76,6 +76,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
@@ -128,6 +129,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
