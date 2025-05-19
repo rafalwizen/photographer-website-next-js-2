@@ -38,12 +38,12 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
                 >
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">{t("hero.title")}</h1>
                     <p className="text-lg md:text-xl opacity-90 mb-8 max-w-xl">{t("hero.subtitle")}</p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <Button size="lg" className="text-base" onClick={() => scrollToSection(galleryRef)}>
+                    <div className="flex flex-col sm:flex-row gap-4 items-start">
+                        <Button size="lg" className="text-base w-48" onClick={() => scrollToSection(galleryRef)}>
                             {t("hero.viewGallery")}
                         </Button>
                         <Button size="lg" variant="outline"
-                                className="text-base text-black border-white hover:bg-white/10"
+                                className="text-base text-black border-white hover:bg-white/10 w-48"
                                 onClick={() => scrollToSection(contactRef)}
                         >
                             {t("hero.bookSession")}
