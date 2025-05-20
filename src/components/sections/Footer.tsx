@@ -27,7 +27,7 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
                         </Link>
                         <p className="text-muted-foreground mt-2 mb-4">{t("footer.tagline")}</p>
                         <div className="flex gap-4">
-                            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Link href="https://www.instagram.com/p_rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
                                 <Instagram className="h-5 w-5"/>
                             </Link>
                             <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
