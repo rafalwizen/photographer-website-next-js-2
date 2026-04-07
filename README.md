@@ -16,8 +16,8 @@ A photographer's website built with NextJS, designed to showcase a portfolio and
 - NextJS
 
 ## Screenshots
-![Screen 1](screenshots/screenshot_1.jpg)
-![Screen 2](screenshots/screenshot_2.jpg)
+![Screen 1](screenshots/screenshot1.jpg)
+![Screen 2](screenshots/screenshot2.jpg)
 ![Screen 3](screenshots/screenshot3.jpg)
 
 ## Contact
