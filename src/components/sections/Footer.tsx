@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import {Instagram, Facebook} from "lucide-react"
+import InstagramIcon from "@/components/icons/InstagramIcon"
+import FacebookIcon from "@/components/icons/FacebookIcon"
 import MyWedIcon from "@/components/icons/MyWedIcon"
 import {useLanguage} from "@/contexts/language-context"
 import type React from "react";
@@ -28,11 +29,11 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
                         <p className="text-muted-foreground mt-2 mb-4">{t("footer.tagline")}</p>
                         <div className="flex gap-4">
                             <Link href="https://www.instagram.com/p_rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Instagram className="h-5 w-5"/>
+                                <InstagramIcon className="h-5 w-5"/>
                             </Link>
                             <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
                                   className="text-muted-foreground hover:text-primary transition-colors">
-                                <Facebook className="h-5 w-5"/>
+                                <FacebookIcon className="h-5 w-5"/>
                             </Link>
                             <Link
                                 href="https://mywed.com/pl/photographer/rozbicki/"

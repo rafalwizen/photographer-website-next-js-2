@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import {Mail, Instagram, Facebook} from "lucide-react"
+import {Mail} from "lucide-react"
+import InstagramIcon from "@/components/icons/InstagramIcon"
+import FacebookIcon from "@/components/icons/FacebookIcon"
 import MyWedIcon from "@/components/icons/MyWedIcon"
 import {useLanguage} from "@/contexts/language-context"
 import {Button} from "@/components/ui/button"
@@ -76,14 +78,14 @@ export default function Contact({contactRef}: ContactProps) {
                             <div className="flex items-center gap-4">
                                 <Link href="https://www.instagram.com/p_rozbicki/"
                                       className="text-muted-foreground hover:text-primary transition-colors">
-                                    <Instagram className="h-5 w-5 text-primary"/>
+                                    <InstagramIcon className="h-5 w-5 text-primary"/>
                                 </Link>
                                 <span>@p_rozbicki</span>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
                                       className="text-muted-foreground hover:text-primary transition-colors">
-                                    <Facebook className="h-5 w-5 text-primary"/>
+                                    <FacebookIcon className="h-5 w-5 text-primary"/>
                                 </Link>
                                 <span>Paweł Rozbicki Photography</span>
                             </div>

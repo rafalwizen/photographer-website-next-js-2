@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import {Instagram, Facebook} from "lucide-react"
+import InstagramIcon from "@/components/icons/InstagramIcon"
+import FacebookIcon from "@/components/icons/FacebookIcon"
 import MyWedIcon from "@/components/icons/MyWedIcon"
 import {useLanguage} from "@/contexts/language-context"
 import type React from "react";
@@ -40,11 +41,11 @@ export default function About({aboutRef}: AboutProps) {
                         <div className="flex gap-4 mb-8">
                             <Link href="https://www.instagram.com/p_rozbicki/"
                                   className="text-muted-foreground hover:text-primary transition-colors">
-                                <Instagram className="h-6 w-6"/>
+                                <InstagramIcon className="h-6 w-6"/>
                             </Link>
                             <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
                                   className="text-muted-foreground hover:text-primary transition-colors">
-                                <Facebook className="h-6 w-6"/>
+                                <FacebookIcon className="h-6 w-6"/>
                             </Link>
                             <Link
                                 href="https://mywed.com/pl/photographer/rozbicki/"
