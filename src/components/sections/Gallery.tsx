@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import {photos} from "@/data/photos"
+import {blurData} from "@/data/blur-data"
 import {useLanguage} from "@/contexts/language-context"
 import {motion} from "framer-motion";
 import {cn} from "@/lib/utils";
@@ -75,6 +76,8 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     alt={`Photo ${photo.id}`}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    placeholder="blur"
+                                    blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
@@ -125,6 +128,8 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
                                     fill
+                                    placeholder="blur"
+                                    blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
                                     sizes={
                                         photo.size === "large"
                                             ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 66vw"
