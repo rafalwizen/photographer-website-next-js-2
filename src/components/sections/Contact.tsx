@@ -8,7 +8,6 @@ import MyWedIcon from "@/components/icons/MyWedIcon"
 import {useLanguage} from "@/contexts/language-context"
 import {Button} from "@/components/ui/button"
 import React, {FormEvent, useState} from "react";
-import emailjs from '@emailjs/browser';
 
 interface ContactProps {
     contactRef: React.RefObject<HTMLElement | null>
@@ -27,11 +26,12 @@ export default function Contact({contactRef}: ContactProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus(null);
 
+        const emailjs = (await import('@emailjs/browser')).default;
         const form = e.target as HTMLFormElement;
         const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
         const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string;

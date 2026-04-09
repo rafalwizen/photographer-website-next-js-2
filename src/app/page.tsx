@@ -3,13 +3,17 @@
 import type React from "react"
 
 import {useState, useEffect, useRef} from "react"
+import dynamic from "next/dynamic"
 import Header from "@/components/sections/Header"
-import MobileMenu from "@/components/sections/MobileMenu"
-import About from "@/components/sections/About"
-import Contact from "@/components/sections/Contact"
-import Footer from "@/components/sections/Footer"
 import Hero from "@/components/sections/Hero"
-import Gallery from "@/components/sections/Gallery";
+
+const MobileMenu = dynamic(() => import("@/components/sections/MobileMenu"))
+const Gallery = dynamic(() => import("@/components/sections/Gallery"), {
+    loading: () => <div className="min-h-screen" />
+})
+const About = dynamic(() => import("@/components/sections/About"))
+const Contact = dynamic(() => import("@/components/sections/Contact"))
+const Footer = dynamic(() => import("@/components/sections/Footer"))
 
 export default function Home() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -46,7 +50,7 @@ export default function Home() {
             <Header scrollY={scrollY} scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef}
                     aboutRef={aboutRef} contactRef={contactRef} setIsMenuOpen={setIsMenuOpen}/>
             {isMenuOpen && <MobileMenu scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef}
-									   aboutRef={aboutRef} contactRef={contactRef} setIsMenuOpen={setIsMenuOpen}/>}
+                                       aboutRef={aboutRef} contactRef={contactRef} setIsMenuOpen={setIsMenuOpen}/>}
             <Hero scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef} contactRef={contactRef}/>
             <Gallery galleryRef={galleryRef}/>
             <About aboutRef={aboutRef}/>
