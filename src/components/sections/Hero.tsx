@@ -18,23 +18,22 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
 
     return (
         <section ref={homeRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-            <div
-                className="absolute inset-0 z-0"
-                style={{
-                    backgroundImage: "url('/images/background.jpg')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            />
+            <picture className="absolute inset-0 z-0">
+                <source media="(max-width: 768px)" srcSet="/images/background-mobile.webp" type="image/webp" />
+                <source media="(max-width: 768px)" srcSet="/images/background-mobile.jpg" type="image/jpeg" />
+                <source srcSet="/images/background.webp" type="image/webp" />
+                <img
+                    src="/images/background.jpg"
+                    alt=""
+                    fetchPriority="high"
+                    loading="eager"
+                    className="w-full h-full object-cover"
+                />
+            </picture>
             <div className="absolute inset-0 bg-black/40 z-10"/>
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white">
-                <motion.div
-                    initial={{opacity: 0, y: 20}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{delay: 0.2}}
-                    className="max-w-3xl"
-                >
+                <div className="max-w-3xl animate-fade-in-up">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">{t("hero.title")}</h1>
                     <p className="text-lg md:text-xl opacity-90 mb-8 max-w-xl">{t("hero.subtitle")}</p>
                     <div className="flex flex-col sm:flex-row gap-4 items-start">
@@ -48,7 +47,7 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
                             {t("hero.bookSession")}
                         </Button>
                     </div>
-                </motion.div>
+                </div>
             </div>
 
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
