@@ -29,7 +29,8 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
-            <link rel="preload" as="image" href="/images/background.webp" type="image/webp" />
+            <link rel="preload" as="image" href="/images/background-mobile.webp" type="image/webp" media="(max-width: 768px)" />
+            <link rel="preload" as="image" href="/images/background.webp" type="image/webp" media="(min-width: 769px)" />
         </head>
         <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
