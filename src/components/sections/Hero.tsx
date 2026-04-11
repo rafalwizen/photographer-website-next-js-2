@@ -1,7 +1,6 @@
 "use client"
 
 import {useLanguage} from "@/contexts/language-context"
-import {motion} from "framer-motion";
 import {Button} from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import type React from "react";
@@ -51,14 +50,12 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
             </div>
 
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-                <motion.div
-                    animate={{y: [0, 10, 0]}}
-                    transition={{repeat: Number.POSITIVE_INFINITY, duration: 2}}
+                <div
                     onClick={() => scrollToSection(galleryRef)}
-                    className="cursor-pointer"
+                    className="cursor-pointer animate-bounce-arrow"
                 >
                     <ArrowRight className="h-10 w-10 text-white rotate-90"/>
-                </motion.div>
+                </div>
             </div>
         </section>
     )

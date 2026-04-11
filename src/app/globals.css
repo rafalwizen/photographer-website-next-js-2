@@ -86,4 +86,31 @@
             transform: translateY(0);
         }
     }
+
+    .animate-bounce-arrow {
+        animation: bounce-arrow 2s infinite;
+    }
+
+    @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .animate-slide-in-right {
+        animation: slide-in-right 0.3s ease-out forwards;
+    }
+
+    @keyframes slide-in-right {
+        from { opacity: 0; transform: translateX(100%); }
+        to { opacity: 1; transform: translateX(0); }
+    }
 }

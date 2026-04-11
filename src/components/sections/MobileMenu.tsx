@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import {motion} from "framer-motion"
 import {Button} from "@/components/ui/button"
 import {X} from "lucide-react"
 import {useLanguage} from "@/contexts/language-context";
@@ -27,11 +26,8 @@ export default function MobileMenu({
     const {t} = useLanguage()
 
     return (
-        <motion.div
-            initial={{opacity: 0, x: "100%"}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: "100%"}}
-            className="fixed inset-0 bg-background z-50 flex flex-col p-6"
+        <div
+            className="fixed inset-0 bg-background z-50 flex flex-col p-6 animate-slide-in-right"
         >
             <div className="flex justify-end">
                 <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
@@ -56,6 +52,6 @@ export default function MobileMenu({
                     {t("nav.contact")}
                 </Button>
             </div>
-        </motion.div>
+        </div>
     )
 }

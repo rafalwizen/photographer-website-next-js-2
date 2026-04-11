@@ -4,10 +4,11 @@ import Image from "next/image"
 import {photos} from "@/data/photos"
 import {blurData} from "@/data/blur-data"
 import {useLanguage} from "@/contexts/language-context"
-import {motion} from "framer-motion";
 import {cn} from "@/lib/utils";
 import React, {useEffect, useState} from "react";
-import Lightbox from "@/components/lightbox";
+import dynamic from "next/dynamic";
+
+const Lightbox = dynamic(() => import("@/components/lightbox"), { ssr: false })
 
 interface GalleryProps {
     galleryRef: React.RefObject<HTMLElement | null>,
@@ -56,18 +57,21 @@ export default function Gallery({galleryRef}: GalleryProps) {
                         {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
                     </h2>
 
-                    {/* Mobile layout (< 768px) - aspect ratio based on photo orientation */}
-                    <div className="block md:hidden space-y-6">
+                    {/* Unified responsive grid - single DOM tree */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:auto-rows-[350px] gap-6">
                         {photos.map((photo, index) => (
-                            <motion.div
+                            <div
                                 key={photo.id}
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                exit={{opacity: 0}}
                                 className={cn(
-                                    "relative group cursor-pointer overflow-hidden rounded-lg mx-auto w-full max-w-md",
-                                    photo.size === "medium" && "aspect-[2/3]",
-                                    photo.size !== "medium" && "aspect-[3/2]"
+                                    "relative group cursor-pointer overflow-hidden rounded-lg animate-fade-in",
+                                    // Mobile: aspect ratio based on photo orientation
+                                    "w-full max-w-md mx-auto",
+                                    photo.size === "medium" ? "aspect-[2/3]" : "aspect-[3/2]",
+                                    // Desktop: masonry grid spans
+                                    "md:max-w-none",
+                                    photo.size === "large" && "lg:col-span-2 lg:row-span-2 lg:aspect-auto",
+                                    photo.size === "medium" && "lg:col-span-1 lg:row-span-2 lg:aspect-auto",
+                                    photo.size === "small" && "lg:col-span-1 lg:row-span-1 lg:aspect-auto",
                                 )}
                                 onClick={() => openLightbox(index)}
                             >
@@ -75,61 +79,6 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                     src={photo.src || "/images/placeholder.png"}
                                     alt={`Photo ${photo.id}`}
                                     fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    placeholder="blur"
-                                    blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div
-                                    className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <div className="bg-black/50 rounded-full p-3">
-                                        <svg
-                                            className="w-8 h-8 text-white"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Tablet and desktop layout (>= 768px) - original masonry grid */}
-                    <motion.div
-                        layout
-                        className="hidden md:grid grid-cols-2 lg:grid-cols-3 auto-rows-[350px] gap-6"
-                    >
-                        {photos.map((photo, index) => (
-                            <motion.div
-                                key={photo.id}
-                                layout
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                exit={{opacity: 0}}
-                                className={cn(
-                                    "relative group cursor-pointer overflow-hidden rounded-lg",
-                                    "md:col-span-1 md:row-span-1",
-                                    photo.size === "large" && "lg:col-span-2 lg:row-span-2",
-                                    photo.size === "medium" && "lg:col-span-1 lg:row-span-2",
-                                    photo.size === "small" && "lg:col-span-1 lg:row-span-1"
-                                )}
-                                onClick={() => openLightbox(index)}
-                            >
-                                <Image
-                                    src={photo.src || "/images/placeholder.png"}
-                                    alt={`Photo ${photo.id}`}
-                                    fill
-                                    placeholder="blur"
-                                    blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
                                     sizes={
                                         photo.size === "large"
                                             ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 66vw"
@@ -137,6 +86,9 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                                 ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                 : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     }
+                                    loading={index < 6 ? "eager" : "lazy"}
+                                    placeholder="blur"
+                                    blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div
@@ -158,9 +110,9 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                         </svg>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
