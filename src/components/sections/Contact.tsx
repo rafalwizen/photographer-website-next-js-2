@@ -42,7 +42,7 @@ export default function Contact({contactRef}: ContactProps) {
                 console.log("Wiadomość wysłana pomyślnie");
                 setSubmitStatus('success');
                 setFormData({
-                    domain: "Hanuskowy Torcik",
+                    domain: "Paweł Rozbicki website",
                     name: "",
                     email: "",
                     message: "",
