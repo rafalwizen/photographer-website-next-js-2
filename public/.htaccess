@@ -1,0 +1,49 @@
+# Enable Gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache expiration
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # CSS and JS bundles (hashed filenames - cache forever)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+
+    # Images (cache for 1 year)
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+
+    # Fonts (cache for 1 year)
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+
+    # HTML (short cache - content updates)
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+    # Hashed static assets - immutable cache
+    <FilesMatch "^.+_next/static/.+\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Images - long cache
+    <FilesMatch "\.(webp|jpg|jpeg|png|svg)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Fonts - long cache
+    <FilesMatch "\.(woff2|woff|ttf|otf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # HTML - short cache
+    <FilesMatch "\.html?$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>
