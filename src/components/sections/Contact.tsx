@@ -39,7 +39,6 @@ export default function Contact({contactRef}: ContactProps) {
 
         emailjs.sendForm(serviceID, templateID, form, userID)
             .then(() => {
-                console.log("Wiadomość wysłana pomyślnie");
                 setSubmitStatus('success');
                 setFormData({
                     domain: "Paweł Rozbicki website",
@@ -48,8 +47,6 @@ export default function Contact({contactRef}: ContactProps) {
                     message: "",
                 });
             }, (error) => {
-                console.log("Błąd podczas wysyłania wiadomości");
-                console.log(error);
                 setSubmitStatus('error');
             })
             .finally(() => {

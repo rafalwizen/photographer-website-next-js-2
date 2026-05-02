@@ -45,7 +45,6 @@ const translations = {
         "contact.studio": "Location",
         "contact.form.name": "Name",
         "contact.form.email": "Email",
-        "contact.form.subject": "Subject",
         "contact.form.message": "Message",
         "contact.form.send": "Send Message",
         "contact.form.sending": "Sending...",
@@ -53,7 +52,6 @@ const translations = {
         "contact.form.error": "Unfortunately, the message couldn't be sent. Please try again in a moment or send me an email!",
         "contact.form.namePlaceholder": "Your name",
         "contact.form.emailPlaceholder": "Your email",
-        "contact.form.subjectPlaceholder": "Subject",
         "contact.form.messagePlaceholder": "Your message",
 
         // Footer
@@ -105,7 +103,6 @@ const translations = {
         "contact.studio": "Lokalizacja",
         "contact.form.name": "Imię",
         "contact.form.email": "Email",
-        "contact.form.subject": "Temat",
         "contact.form.message": "Wiadomość",
         "contact.form.send": "Wyślij wiadomość",
         "contact.form.sending": "Wysyłanie...",
@@ -113,7 +110,6 @@ const translations = {
         "contact.form.error": "Niestety nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę albo napisz do mnie maila!",
         "contact.form.namePlaceholder": "Twoje imię",
         "contact.form.emailPlaceholder": "Twój email",
-        "contact.form.subjectPlaceholder": "Temat",
         "contact.form.messagePlaceholder": "Twoja wiadomość",
 
         // Footer
