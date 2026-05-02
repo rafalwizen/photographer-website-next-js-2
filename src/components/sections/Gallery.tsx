@@ -5,7 +5,7 @@ import {photos} from "@/data/photos"
 import {blurData} from "@/data/blur-data"
 import {useLanguage} from "@/contexts/language-context"
 import {cn} from "@/lib/utils";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import dynamic from "next/dynamic";
 
 const Lightbox = dynamic(() => import("@/components/lightbox"), { ssr: false })
@@ -18,19 +18,6 @@ export default function Gallery({galleryRef}: GalleryProps) {
     const {t} = useLanguage()
     const [lightboxOpen, setLightboxOpen] = useState(false)
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
-
-    // Lock body scroll when lightbox is open
-    useEffect(() => {
-        if (lightboxOpen) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'unset'
-        }
-
-        return () => {
-            document.body.style.overflow = 'unset'
-        }
-    }, [lightboxOpen])
 
     const openLightbox = (index: number) => {
         setCurrentPhotoIndex(index)
