@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import {photos} from "@/data/photos"
+import {photos, getThumbSrc} from "@/data/photos"
 import {blurData} from "@/data/blur-data"
 import {useLanguage} from "@/contexts/language-context"
 import {cn} from "@/lib/utils";
@@ -38,7 +38,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
 
     return (
         <>
-            <section ref={galleryRef} id="gallery" className="py-20 bg-background">
+            <section ref={galleryRef} id="gallery" className="py-20 bg-background content-auto">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
                         {t("gallery.title")} <span className="text-primary">{t("gallery.titleHighlight")}</span>
@@ -63,7 +63,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                 onClick={() => openLightbox(index)}
                             >
                                 <Image
-                                    src={photo.src || "/images/placeholder.png"}
+                                    src={getThumbSrc(photo)}
                                     alt={`Photo ${photo.id}`}
                                     fill
                                     sizes={
@@ -73,7 +73,8 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                                 ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                 : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     }
-                                    loading={index < 6 ? "eager" : "lazy"}
+                                    loading="lazy"
+                                    decoding="async"
                                     placeholder="blur"
                                     blurDataURL={blurData[photo.src.replace('/images/gallery/', '').replace('.webp', '')]}
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"

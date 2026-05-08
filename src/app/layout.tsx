@@ -5,7 +5,7 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/contexts/language-context"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
     title: "Paweł Rozbicki - Fotograf ślubny Tarnowskie Góry i cała Polska",
@@ -29,8 +29,8 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
-            <link rel="preload" as="image" href="/images/background-mobile.webp" type="image/webp" media="(max-width: 768px)" />
-            <link rel="preload" as="image" href="/images/background.webp" type="image/webp" media="(min-width: 769px)" />
+            <link rel="preload" as="image" href="/images/background-mobile.avif" type="image/avif" media="(max-width: 768px)" />
+            <link rel="preload" as="image" href="/images/background.avif" type="image/avif" media="(min-width: 769px)" />
         </head>
         <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>

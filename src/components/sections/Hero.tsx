@@ -18,8 +18,10 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
     return (
         <section ref={homeRef} className="relative h-screen flex items-center justify-center overflow-hidden">
             <picture className="absolute inset-0 z-0">
+                <source media="(max-width: 768px)" srcSet="/images/background-mobile.avif" type="image/avif" />
                 <source media="(max-width: 768px)" srcSet="/images/background-mobile.webp" type="image/webp" />
                 <source media="(max-width: 768px)" srcSet="/images/background-mobile.jpg" type="image/jpeg" />
+                <source srcSet="/images/background.avif" type="image/avif" />
                 <source srcSet="/images/background.webp" type="image/webp" />
                 <img
                     src="/images/background.jpg"

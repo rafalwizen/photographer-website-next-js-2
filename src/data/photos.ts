@@ -4,6 +4,18 @@ export interface Photo {
     size: "small" | "medium" | "large";
 }
 
+function extractName(photo: Photo): string {
+    return photo.src.replace('/images/gallery/', '').replace('.webp', '');
+}
+
+export function getThumbSrc(photo: Photo): string {
+    return `/images/gallery/thumbs/${extractName(photo)}.avif`;
+}
+
+export function getFullSrc(photo: Photo): string {
+    return `/images/gallery/${extractName(photo)}.avif`;
+}
+
 export const photos: Photo[] = [
     {id: 1, src: "/images/gallery/1-1.webp", size: "medium"},
     {id: 2, src: "/images/gallery/1-4.webp", size: "large"},

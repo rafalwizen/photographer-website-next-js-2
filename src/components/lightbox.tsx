@@ -3,11 +3,13 @@
 import { useEffect } from "react"
 import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import type { Photo } from "@/data/photos"
+import { getFullSrc } from "@/data/photos"
 
 interface LightboxProps {
     isOpen: boolean
     onClose: () => void
-    photos: { id: number; src: string; size: string }[]
+    photos: Photo[]
     currentIndex: number
     onPrevious: () => void
     onNext: () => void
@@ -89,10 +91,11 @@ export default function Lightbox({
                     className="relative w-full h-full max-w-6xl max-h-screen px-4 py-12 flex items-center justify-center animate-fade-in"
                 >
                     <Image
-                        src={photos[currentIndex].src}
+                        src={getFullSrc(photos[currentIndex])}
                         alt={`Photo ${photos[currentIndex].id}`}
                         fill
                         className="object-contain"
+                        loading="lazy"
                     />
                 </div>
 

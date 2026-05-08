@@ -19,7 +19,7 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
     const {t} = useLanguage()
 
     return (
-        <footer className="bg-muted py-12">
+        <footer className="bg-muted py-12 content-auto">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-3 gap-8">
                     <div>

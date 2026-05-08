@@ -17,7 +17,7 @@ export default function About({aboutRef}: AboutProps) {
     const {t} = useLanguage()
 
     return (
-        <section ref={aboutRef} id="about" className="py-20 bg-muted/50">
+        <section ref={aboutRef} id="about" className="py-20 bg-muted/50 content-auto">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="relative">
