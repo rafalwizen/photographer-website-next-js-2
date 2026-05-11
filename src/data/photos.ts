@@ -12,6 +12,10 @@ export function getThumbSrc(photo: Photo): string {
     return `/images/gallery/thumbs/${extractName(photo)}.avif`;
 }
 
+export function getMidSrc(photo: Photo): string {
+    return `/images/gallery/${extractName(photo)}-mid.avif`;
+}
+
 export function getFullSrc(photo: Photo): string {
     return `/images/gallery/${extractName(photo)}.avif`;
 }

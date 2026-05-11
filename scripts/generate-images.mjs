@@ -10,6 +10,8 @@ const AVIF_QUALITY = 65;
 const THUMB_AVIF_QUALITY = 60;
 const THUMB_WEBP_QUALITY = 70;
 const THUMB_MAX_WIDTH = 600;
+const MID_AVIF_QUALITY = 60;
+const MID_MAX_WIDTH = 1200;
 
 async function generateHeroAvif() {
     for (const name of ['background', 'background-mobile']) {
@@ -45,12 +47,18 @@ async function generateGalleryVariants() {
             .webp({ quality: THUMB_WEBP_QUALITY })
             .toFile(join(THUMBS, `${name}.webp`));
 
+        // Mid-size AVIF for desktop gallery tiles (max 1200px wide)
+        await sharp(src)
+            .resize(MID_MAX_WIDTH, null, { withoutEnlargement: true })
+            .avif({ quality: MID_AVIF_QUALITY, effort: 6 })
+            .toFile(join(GALLERY, `${name}-mid.avif`));
+
         // Full-res AVIF for lightbox
         await sharp(src)
             .avif({ quality: AVIF_QUALITY, effort: 6 })
             .toFile(join(GALLERY, `${name}.avif`));
     }
-    console.log(`  Generated ${webpFiles.length * 3} gallery variants`);
+    console.log(`  Generated ${webpFiles.length * 4} gallery variants`);
 }
 
 async function generateProfileAvif() {

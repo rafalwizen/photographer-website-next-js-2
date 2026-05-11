@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import {photos, getThumbSrc} from "@/data/photos"
+import {photos, getMidSrc} from "@/data/photos"
 import {blurData} from "@/data/blur-data"
 import {useLanguage} from "@/contexts/language-context"
 import {cn} from "@/lib/utils";
@@ -63,7 +63,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                                 onClick={() => openLightbox(index)}
                             >
                                 <Image
-                                    src={getThumbSrc(photo)}
+                                    src={getMidSrc(photo)}
                                     alt={`Photo ${photo.id}`}
                                     fill
                                     sizes={
