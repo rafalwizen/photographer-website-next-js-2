@@ -64,7 +64,7 @@ export default function Gallery({galleryRef}: GalleryProps) {
                             >
                                 <Image
                                     src={getMidSrc(photo)}
-                                    alt={`Photo ${photo.id}`}
+                                    alt={photo.alt}
                                     fill
                                     sizes={
                                         photo.size === "large"

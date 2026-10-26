@@ -17,10 +17,13 @@ const translations = {
         "nav.gallery": "Gallery",
         "nav.about": "About",
         "nav.contact": "Contact",
+        "nav.mainNav": "Main navigation",
+        "nav.openMenu": "Open menu",
+        "nav.closeMenu": "Close menu",
 
         // Hero
-        "hero.title": "Capturing moments that that matter",
-        "hero.subtitle": "So, when will I see you in front of my camera?",
+        "hero.title": "Wedding photographer from Tarnowskie Góry",
+        "hero.subtitle": "Capturing moments that matter – natural, emotional wedding photography in Silesia and across Poland.",
         "hero.viewGallery": "View Gallery",
         "hero.bookSession": "Book a Session",
 
@@ -32,9 +35,9 @@ const translations = {
         "about.title": "About",
         "about.titleHighlight": "Me",
         "about.paragraph1":
-            "Hi! I'm a photography enthusiast with many years of experience capturing life’s most meaningful moments. My journey began at a young age, and ever since, photography has been my true passion.",
+            "Hi, I'm Paweł – a wedding photographer from Tarnowskie Góry. In photography I value naturalness above all: I don't stage artificial scenes, I discreetly observe and capture real emotions – parents in tears, laughter during the morning preparations, the first dance.",
         "about.paragraph2":
-            "I specialize in portrait, landscape, and wedding photography, bringing a unique perspective to every session. My style blends classic techniques with a modern aesthetic, creating timeless images that tell your story.",
+            "Wedding photography is, to me, the story of an entire day – from the preparations, through the ceremony, to the last dance. I work in Silesia: Tarnowskie Góry, Gliwice, Katowice, Bytom – but I'll happily follow you anywhere in Poland. If you're looking for someone who will capture your wedding with care and ease – get in touch.",
 
         // Contact
         "contact.title": "Get in",
@@ -54,8 +57,16 @@ const translations = {
         "contact.form.emailPlaceholder": "Your email",
         "contact.form.messagePlaceholder": "Your message",
 
+        // Lightbox
+        "lightbox.close": "Close",
+        "lightbox.previous": "Previous image",
+        "lightbox.next": "Next image",
+
+        // Accessibility
+        "a11y.skipToContent": "Skip to content",
+
         // Footer
-        "footer.tagline": "Capturing life's beautiful moments through a creative lens.",
+        "footer.tagline": "Wedding photographer · Tarnowskie Góry · Silesia and all of Poland",
         "footer.quickLinks": "Quick Links",
         "footer.services": "Services",
         "footer.service.portrait": "Portrait Photography",
@@ -75,10 +86,13 @@ const translations = {
         "nav.gallery": "Galeria",
         "nav.about": "O mnie",
         "nav.contact": "Kontakt",
+        "nav.mainNav": "Nawigacja główna",
+        "nav.openMenu": "Otwórz menu",
+        "nav.closeMenu": "Zamknij menu",
 
         // Hero
-        "hero.title": "Uwieczniam chwile, które mają znaczenie",
-        "hero.subtitle": "A z Tobą kiedy widzę się na zdjęcia?",
+        "hero.title": "Fotograf ślubny z Tarnowskich Gór",
+        "hero.subtitle": "Uwieczniam chwile, które mają znaczenie – fotografia ślubna pełna emocji, na Śląsku i w całej Polsce.",
         "hero.viewGallery": "Zobacz galerię",
         "hero.bookSession": "Zarezerwuj sesję",
 
@@ -90,9 +104,9 @@ const translations = {
         "about.title": "O",
         "about.titleHighlight": "Mnie",
         "about.paragraph1":
-            "Cześć! Jestem pasjonatem fotografii z wieloletnim doświadczeniem w uchwycaniu najważniejszych momentów życia. Moja przygoda z aparatem zaczęła się w młodym wieku i od tamtej pory fotografia stała się moją życiową pasją.",
+            "Cześć, jestem Paweł – fotograf ślubny z Tarnowskich Gór. W fotografii cenię przede wszystkim naturalność: nie ustawiam sztucznych scen, tylko dyskretnie obserwuję i utrwalam prawdziwe emocje – wzruszenie rodziców, śmiech podczas porannych przygotowań, pierwszy taniec.",
         "about.paragraph2":
-            "Specjalizuję się w fotografii portretowej, krajobrazowej oraz ślubnej, wnosząc indywidualne podejście do każdej sesji. Mój styl to połączenie klasycznych technik z nowoczesnym spojrzeniem, dzięki czemu powstają ponadczasowe zdjęcia, które opowiadają Twoją historię.",
+            "Fotografia ślubna to dla mnie opowieść o całym dniu – od przygotowań, przez ceremonię, aż po ostatniego tańca. Pracuję na Śląsku: w Tarnowskich Górach, Gliwicach, Katowicach czy Bytomiu, ale chętnie pojadę za Wami w każdy zakątek Polski. Jeśli szukacie kogoś, kto z uwagą i swobodą uwieczni Wasz ślub – napiszcie do mnie.",
 
         // Contact
         "contact.title": "Skontaktuj się",
@@ -112,8 +126,16 @@ const translations = {
         "contact.form.emailPlaceholder": "Twój email",
         "contact.form.messagePlaceholder": "Twoja wiadomość",
 
+        // Lightbox
+        "lightbox.close": "Zamknij",
+        "lightbox.previous": "Poprzednie zdjęcie",
+        "lightbox.next": "Następne zdjęcie",
+
+        // Accessibility
+        "a11y.skipToContent": "Przejdź do treści",
+
         // Footer
-        "footer.tagline": "Uwieczniam piękne chwile życia przez kreatywny obiektyw.",
+        "footer.tagline": "Fotograf ślubny · Tarnowskie Góry · Śląsk i cała Polska",
         "footer.quickLinks": "Szybkie linki",
         "footer.services": "Usługi",
         "footer.service.portrait": "Fotografia portretowa",
@@ -141,6 +163,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
             setLanguageState(savedLanguage)
         }
     }, [])
+
+    // Keep <html lang> in sync with the visible language for screen readers
+    useEffect(() => {
+        document.documentElement.lang = language
+    }, [language])
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang)
