@@ -61,6 +61,18 @@ async function generateGalleryVariants() {
     console.log(`  Generated ${webpFiles.length * 4} gallery variants`);
 }
 
+async function generateOgImage() {
+    // Open Graph image 1200x630. JPEG for social scraper compatibility
+    // (Facebook/WhatsApp/LinkedIn do not reliably support AVIF/WebP).
+    const src = join(PUBLIC, 'background.webp');
+    const dest = join(PUBLIC, 'og-image.jpg');
+    await sharp(src)
+        .resize(1200, 630, { fit: 'cover' })
+        .jpeg({ quality: 82, mozjpeg: true })
+        .toFile(dest);
+    console.log('  og-image.jpg: 1200x630');
+}
+
 async function generateProfileAvif() {
     const src = join(PUBLIC, 'profile_picture.jpg');
     await sharp(src)
@@ -73,5 +85,6 @@ async function generateProfileAvif() {
 console.log('Generating image variants...');
 await generateHeroAvif();
 await generateGalleryVariants();
+await generateOgImage();
 await generateProfileAvif();
 console.log('Done!');
