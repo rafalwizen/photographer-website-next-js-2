@@ -28,15 +28,18 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
                         </Link>
                         <p className="text-muted-foreground mt-2 mb-4">{t("footer.tagline")}</p>
                         <div className="flex gap-4">
-                            <Link href="https://www.instagram.com/p_rozbicki/" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Link href="https://www.instagram.com/p_rozbicki/" aria-label="Instagram – Paweł Rozbicki"
+                                  className="text-muted-foreground hover:text-primary transition-colors">
                                 <InstagramIcon className="h-5 w-5"/>
                             </Link>
                             <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
+                                  aria-label="Facebook – Paweł Rozbicki Photography"
                                   className="text-muted-foreground hover:text-primary transition-colors">
                                 <FacebookIcon className="h-5 w-5"/>
                             </Link>
                             <Link
                                 href="https://mywed.com/pl/photographer/rozbicki/"
+                                aria-label="MyWed – Paweł Rozbicki"
                                 className="text-muted-foreground hover:text-primary transition-colors"
                             >
                                 <MyWedIcon className="h-6 w-6"/>
@@ -48,36 +51,52 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
                         <h3 className="font-semibold mb-4">{t("footer.quickLinks")}</h3>
                         <ul className="space-y-2">
                             <li>
-                                <button
-                                    onClick={() => scrollToSection(homeRef)}
+                                <a
+                                    href="#home"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        scrollToSection(homeRef)
+                                    }}
                                     className="text-muted-foreground hover:text-primary transition-colors"
                                 >
                                     {t("nav.home")}
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button
-                                    onClick={() => scrollToSection(galleryRef)}
+                                <a
+                                    href="#gallery"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        scrollToSection(galleryRef)
+                                    }}
                                     className="text-muted-foreground hover:text-primary transition-colors"
                                 >
                                     {t("nav.gallery")}
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button
-                                    onClick={() => scrollToSection(aboutRef)}
+                                <a
+                                    href="#about"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        scrollToSection(aboutRef)
+                                    }}
                                     className="text-muted-foreground hover:text-primary transition-colors"
                                 >
                                     {t("nav.about")}
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button
-                                    onClick={() => scrollToSection(contactRef)}
+                                <a
+                                    href="#contact"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        scrollToSection(contactRef)
+                                    }}
                                     className="text-muted-foreground hover:text-primary transition-colors"
                                 >
                                     {t("nav.contact")}
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -86,24 +105,24 @@ export default function Footer({scrollToSection, homeRef, galleryRef, aboutRef, 
                         <h3 className="font-semibold mb-4">{t("footer.services")}</h3>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                                <span className="text-muted-foreground">
                                     {t("footer.service.portrait")}
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                                <span className="text-muted-foreground">
                                     {t("footer.service.wedding")}
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                                <span className="text-muted-foreground">
                                     {t("footer.service.landscape")}
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                                <span className="text-muted-foreground">
                                     {t("footer.service.commercial")}
-                                </Link>
+                                </span>
                             </li>
                         </ul>
                     </div>

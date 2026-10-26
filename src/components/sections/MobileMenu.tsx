@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import {Button} from "@/components/ui/button"
+import {Button, buttonVariants} from "@/components/ui/button"
 import {X} from "lucide-react"
+import {cn} from "@/lib/utils"
 import {useLanguage} from "@/contexts/language-context";
 
 interface MobileMenuProps {
@@ -30,28 +31,53 @@ export default function MobileMenu({
             className="fixed inset-0 bg-background z-50 flex flex-col p-6 animate-slide-in-right"
         >
             <div className="flex justify-end">
-                <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)} aria-label={t("nav.closeMenu")}>
                     <X className="h-6 w-6"/>
                 </Button>
             </div>
 
-            <div className="flex flex-col items-center justify-center space-y-8 flex-1">
-                <button onClick={() => scrollToSection(homeRef)} className="text-2xl font-medium">
+            <nav aria-label={t("nav.mainNav")} className="flex flex-col items-center justify-center space-y-8 flex-1">
+                <a
+                    href="#home"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(homeRef)
+                    }}
+                    className="text-2xl font-medium"
+                >
                     {t("nav.home")}
-                </button>
-                <button onClick={() => scrollToSection(galleryRef)} className="text-2xl font-medium">
+                </a>
+                <a
+                    href="#gallery"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(galleryRef)
+                    }}
+                    className="text-2xl font-medium"
+                >
                     {t("nav.gallery")}
-                </button>
-                <button onClick={() => scrollToSection(aboutRef)} className="text-2xl font-medium">
+                </a>
+                <a
+                    href="#about"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(aboutRef)
+                    }}
+                    className="text-2xl font-medium"
+                >
                     {t("nav.about")}
-                </button>
-                <Button size="lg"
-                        className="mt-4"
-                        onClick={() => scrollToSection(contactRef)}
+                </a>
+                <a
+                    href="#contact"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(contactRef)
+                    }}
+                    className={cn(buttonVariants({size: "lg"}), "mt-4")}
                 >
                     {t("nav.contact")}
-                </Button>
-            </div>
+                </a>
+            </nav>
         </div>
     )
 }

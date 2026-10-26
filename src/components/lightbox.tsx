@@ -5,6 +5,7 @@ import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { Photo } from "@/data/photos"
 import { getFullSrc } from "@/data/photos"
+import { useLanguage } from "@/contexts/language-context"
 
 interface LightboxProps {
     isOpen: boolean
@@ -23,6 +24,8 @@ export default function Lightbox({
                                      onPrevious,
                                      onNext
                                  }: LightboxProps) {
+
+    const { t } = useLanguage()
 
     // Lock body scroll when lightbox is open
     useEffect(() => {
@@ -66,7 +69,7 @@ export default function Lightbox({
             <button
                 className="absolute top-6 right-6 text-white z-10"
                 onClick={onClose}
-                aria-label="Close lightbox"
+                aria-label={t("lightbox.close")}
             >
                 <X className="h-8 w-8" />
             </button>
@@ -80,7 +83,7 @@ export default function Lightbox({
                         e.stopPropagation()
                         onPrevious()
                     }}
-                    aria-label="Previous image"
+                    aria-label={t("lightbox.previous")}
                 >
                     <ChevronLeft className="h-8 w-8" />
                 </button>
@@ -92,7 +95,7 @@ export default function Lightbox({
                 >
                     <Image
                         src={getFullSrc(photos[currentIndex])}
-                        alt={`Photo ${photos[currentIndex].id}`}
+                        alt={photos[currentIndex].alt}
                         fill
                         className="object-contain"
                         loading="lazy"
@@ -106,7 +109,7 @@ export default function Lightbox({
                         e.stopPropagation()
                         onNext()
                     }}
-                    aria-label="Next image"
+                    aria-label={t("lightbox.next")}
                 >
                     <ChevronRight className="h-8 w-8" />
                 </button>

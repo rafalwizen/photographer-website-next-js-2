@@ -73,7 +73,7 @@ export default function Contact({contactRef}: ContactProps) {
                                 <span>pawel.rozbicki@gmail.com</span>
                             </div>
                             <div className="flex items-center gap-4">
-                                <Link href="https://www.instagram.com/p_rozbicki/"
+                                <Link href="https://www.instagram.com/p_rozbicki/" aria-label="Instagram – Paweł Rozbicki"
                                       className="text-muted-foreground hover:text-primary transition-colors">
                                     <InstagramIcon className="h-5 w-5 text-primary"/>
                                 </Link>
@@ -81,13 +81,14 @@ export default function Contact({contactRef}: ContactProps) {
                             </div>
                             <div className="flex items-center gap-4">
                                 <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
+                                      aria-label="Facebook – Paweł Rozbicki Photography"
                                       className="text-muted-foreground hover:text-primary transition-colors">
                                     <FacebookIcon className="h-5 w-5 text-primary"/>
                                 </Link>
                                 <span>Paweł Rozbicki Photography</span>
                             </div>
                             <div className="flex items-center gap-4">
-                                <Link href="https://mywed.com/pl/photographer/rozbicki/"
+                                <Link href="https://mywed.com/pl/photographer/rozbicki/" aria-label="MyWed – Paweł Rozbicki"
                                       className="text-muted-foreground hover:text-primary transition-colors">
                                     <MyWedIcon className="h-5 w-5 text-primary"/>
                                 </Link>

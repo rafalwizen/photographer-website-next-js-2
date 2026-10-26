@@ -16,7 +16,7 @@ export default function Hero({scrollToSection, homeRef, galleryRef, contactRef}:
     const {t} = useLanguage()
 
     return (
-        <section ref={homeRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section ref={homeRef} id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
             <picture className="absolute inset-0 z-0">
                 <source media="(max-width: 768px)" srcSet="/images/background-mobile.avif" type="image/avif" />
                 <source media="(max-width: 768px)" srcSet="/images/background-mobile.webp" type="image/webp" />

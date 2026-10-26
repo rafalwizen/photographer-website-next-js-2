@@ -24,7 +24,7 @@ export default function About({aboutRef}: AboutProps) {
                         <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary rounded-tl-3xl"/>
                         <Image
                             src="/images/profile_picture.jpg?height=800&width=600"
-                            alt="Photographer"
+                            alt="Paweł Rozbicki – fotograf ślubny z Tarnowskich Gór"
                             width={600}
                             height={800}
                             className="rounded-lg relative z-10 w-full"
@@ -39,16 +39,18 @@ export default function About({aboutRef}: AboutProps) {
                         <p className="text-muted-foreground mb-6">{t("about.paragraph1")}</p>
                         <p className="text-muted-foreground mb-6">{t("about.paragraph2")}</p>
                         <div className="flex gap-4 mb-8">
-                            <Link href="https://www.instagram.com/p_rozbicki/"
+                            <Link href="https://www.instagram.com/p_rozbicki/" aria-label="Instagram – Paweł Rozbicki"
                                   className="text-muted-foreground hover:text-primary transition-colors">
                                 <InstagramIcon className="h-6 w-6"/>
                             </Link>
                             <Link href="https://www.facebook.com/p/Pawe%C5%82-Rozbicki-Photography-100063636543959"
+                                  aria-label="Facebook – Paweł Rozbicki Photography"
                                   className="text-muted-foreground hover:text-primary transition-colors">
                                 <FacebookIcon className="h-6 w-6"/>
                             </Link>
                             <Link
                                 href="https://mywed.com/pl/photographer/rozbicki/"
+                                aria-label="MyWed – Paweł Rozbicki"
                                 className="text-muted-foreground hover:text-primary transition-colors"
                             >
                                 <MyWedIcon className="h-6 w-6"/>

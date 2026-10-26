@@ -6,6 +6,7 @@ import {useState, useEffect, useRef} from "react"
 import dynamic from "next/dynamic"
 import Header from "@/components/sections/Header"
 import Hero from "@/components/sections/Hero"
+import {useLanguage} from "@/contexts/language-context"
 
 const MobileMenu = dynamic(() => import("@/components/sections/MobileMenu"))
 const Gallery = dynamic(() => import("@/components/sections/Gallery"), {
@@ -16,6 +17,7 @@ const Contact = dynamic(() => import("@/components/sections/Contact"))
 const Footer = dynamic(() => import("@/components/sections/Footer"))
 
 export default function Home() {
+    const {t} = useLanguage()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [scrollY, setScrollY] = useState(0)
 
@@ -54,14 +56,17 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-background">
+            <a href="#main" className="skip-link">{t("a11y.skipToContent")}</a>
             <Header scrollY={scrollY} scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef}
                     aboutRef={aboutRef} contactRef={contactRef} setIsMenuOpen={setIsMenuOpen}/>
             {isMenuOpen && <MobileMenu scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef}
                                        aboutRef={aboutRef} contactRef={contactRef} setIsMenuOpen={setIsMenuOpen}/>}
-            <Hero scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef} contactRef={contactRef}/>
-            <Gallery galleryRef={galleryRef}/>
-            <About aboutRef={aboutRef}/>
-            <Contact contactRef={contactRef}/>
+            <main id="main">
+                <Hero scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef} contactRef={contactRef}/>
+                <Gallery galleryRef={galleryRef}/>
+                <About aboutRef={aboutRef}/>
+                <Contact contactRef={contactRef}/>
+            </main>
             <Footer scrollToSection={scrollToSection} homeRef={homeRef} galleryRef={galleryRef} aboutRef={aboutRef}
                     contactRef={contactRef}/>
         </div>

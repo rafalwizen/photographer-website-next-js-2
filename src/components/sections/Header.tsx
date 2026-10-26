@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import {Menu} from "lucide-react"
-import {Button} from "@/components/ui/button"
+import {Button, buttonVariants} from "@/components/ui/button"
 import {cn} from "@/lib/utils"
 import {LanguageSwitcher} from "@/components/language-switcher"
 import {useLanguage} from "@/contexts/language-context";
@@ -43,36 +43,54 @@ export default function Header({
                 </Link>
 
                 <div className="hidden md:flex items-center space-x-8">
-                    <button
-                        onClick={() => scrollToSection(homeRef)}
-                        className="text-sm font-medium hover:text-primary transition-colors"
-                    >
-                        {t("nav.home")}
-                    </button>
-                    <button
-                        onClick={() => scrollToSection(galleryRef)}
-                        className="text-sm font-medium hover:text-primary transition-colors"
-                    >
-                        {t("nav.gallery")}
-                    </button>
-                    <button
-                        onClick={() => scrollToSection(aboutRef)}
-                        className="text-sm font-medium hover:text-primary transition-colors"
-                    >
-                        {t("nav.about")}
-                    </button>
-                    <Button
-                        onClick={() => scrollToSection(contactRef)}
-                        className="text-sm font-medium hover:text-primary transition-colors"
-                    >
-                        {t("nav.contact")}
-                    </Button>
+                    <nav aria-label={t("nav.mainNav")} className="flex items-center space-x-8">
+                        <a
+                            href="#home"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                scrollToSection(homeRef)
+                            }}
+                            className="text-sm font-medium hover:text-primary transition-colors"
+                        >
+                            {t("nav.home")}
+                        </a>
+                        <a
+                            href="#gallery"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                scrollToSection(galleryRef)
+                            }}
+                            className="text-sm font-medium hover:text-primary transition-colors"
+                        >
+                            {t("nav.gallery")}
+                        </a>
+                        <a
+                            href="#about"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                scrollToSection(aboutRef)
+                            }}
+                            className="text-sm font-medium hover:text-primary transition-colors"
+                        >
+                            {t("nav.about")}
+                        </a>
+                        <a
+                            href="#contact"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                scrollToSection(contactRef)
+                            }}
+                            className={cn(buttonVariants(), "text-sm font-medium hover:text-primary transition-colors")}
+                        >
+                            {t("nav.contact")}
+                        </a>
+                    </nav>
                     <LanguageSwitcher/>
                 </div>
 
                 <div className="md:hidden flex items-center gap-2">
                     <LanguageSwitcher/>
-                    <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(true)}>
+                    <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(true)} aria-label={t("nav.openMenu")}>
                         <Menu className="h-6 w-6"/>
                     </Button>
                 </div>

@@ -28,6 +28,7 @@ export function LanguageSwitcher() {
                 onClick={() => setOpen(!open)}
                 className="h-9 w-9 rounded-full inline-flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                 aria-label={t("language")}
+                aria-expanded={open}
             >
                 <Globe className="h-5 w-5" />
             </button>
