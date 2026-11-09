@@ -5,6 +5,9 @@
     RewriteCond %{HTTPS} off [OR]
     RewriteCond %{HTTP_HOST} ^www\.rozbickipawel\.pl$ [NC]
     RewriteRule ^ https://rozbickipawel.pl%{REQUEST_URI} [R=301,L]
+
+    # Old locale routes from the previous site version -> homepage
+    RewriteRule ^(en|pl)(/.*)?$ https://rozbickipawel.pl/ [R=301,L]
 </IfModule>
 
 # Enable Gzip compression
